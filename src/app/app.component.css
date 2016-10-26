@@ -1,0 +1,39 @@
+.title {
+    text-align: center;
+}
+.price-filter-form {
+    text-align: center;
+}
+.price-list {
+    max-width: 500px;
+    margin: 1rem auto;
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #bbb;
+    box-shadow: 3px 3px 6px #bbb;
+}
+.product-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+}
+.product-item:nth-child(odd) {
+    background: #fafafa;
+}
+.name {
+    text-align: left
+}
+.price {
+    text-align: right;
+    float: right;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.note {
+    max-width: 500px;
+    padding: 1rem;
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+    background: #ffffd2;
+    border: 1px solid #ffef25;
+}
