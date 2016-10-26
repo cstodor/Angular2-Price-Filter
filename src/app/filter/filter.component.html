@@ -1,0 +1,21 @@
+<form [formGroup]="priceFilterForm" class="price-filter-form" autocomplete="off" novalidate (ngSubmit)="onSubmit()">
+	<div class="form-group">
+
+		<!-- Price From Select -->
+		<label for="price-min">Min Price</label>
+		<select id="price-min" class="form-control" name="pricemin" [(ngModel)]="priceMinFilter" (ngModelChange)="onPriceMinChange()"
+			formControlName="priceMin">
+      <option *ngFor="let _priceMin of _priceOptions">{{ _priceMin.value | currency:'USD':true:'1.0-2' }}</option>
+    </select>
+
+		<!-- Price To Select -->
+		<label for="price-max">Max Price</label>
+		<select id="price-max" class="form-control" name="pricemax" [(ngModel)]="priceMaxFilter" (ngModelChange)="onPriceMaxChange()"
+			formControlName="priceMax">
+      <option *ngFor="let _priceMax of _priceOptions">{{ _priceMax.value | currency:'USD':true:'1.0-2' }}</option>
+    </select>
+
+		<button type="submit" (click)="onSubmit()">Filter by Price!</button>
+
+	</div>
+</form>
