@@ -1,11 +1,18 @@
+<!-- Title -->
 <h2 class="title">Price Filter Pipe with Data Driven Form Approach</h2>
+
+<!-- Filter -->
 <zt-filter (filterPrice)='filterPrice($event)'></zt-filter>
+
+<!-- Notification -->
 <div class="note" *ngIf="priceMinFilter || priceMaxFilter">
-	<span *ngIf="priceMinFilter">Filtering Products from <strong>{{ priceMinFilter }}</strong></span>
-	<span *ngIf="priceMaxFilter"> to <strong>{{ priceMaxFilter }}</strong>.</span>
+	<span *ngIf="priceMinFilter">Filtering Products from <strong>${{ priceMinFilter }}</strong></span>
+	<span *ngIf="priceMaxFilter"> to <strong>${{ priceMaxFilter }}</strong>.</span>
 </div>
+
+<!--Product List -->
 <div class="price-list">
-	<div class="product-item" *ngFor="let _price of _productPrices">
-		<span class="name">{{ _price.name }}</span><span class="price">{{ _price.price | currency:'USD':true:'1.0-2' }}</span>
+	<div class="product-item" *ngFor="let _product of _productList">
+		<span class="name">{{ _product.name }}</span><span class="price">{{ _product.price | currency:'USD':true:'1.0-2' }}</span>
 	</div>
 </div>
