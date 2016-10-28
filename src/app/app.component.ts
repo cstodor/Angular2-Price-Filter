@@ -16,7 +16,7 @@ export class AppComponent {
     this.priceMaxFilter = filter.priceMax;
   }
 
-  _productPrices = [
+  _productList = [
     {
       "name": "Product One",
       "price": 600,
@@ -64,6 +64,6 @@ export class AppComponent {
     {
       "name": "Product Twelve",
       "price": 1000000,
-    },
+    }
   ]
 }
