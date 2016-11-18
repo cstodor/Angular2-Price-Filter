@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PriceFilterPipe } from './filter/filter.pipe';
 import { FilterComponent } from './filter/filter.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FilterComponent } from './filter/filter.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
