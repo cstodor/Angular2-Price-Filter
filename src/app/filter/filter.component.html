@@ -3,16 +3,15 @@
 
 		<!-- Price From Select -->
 		<label for="price-min">Min Price</label>
-		<select id="price-min" class="form-control" name="pricemin" [(ngModel)]="priceMinFilter" (ngModelChange)="onPriceMinChange()"
-			formControlName="priceMin">
-      <option *ngFor="let _priceMin of _priceOptions" [value]="_priceMin.productPrice" >{{ _priceMin.productPrice | currency:'USD':true:'1.0-2' }}</option>
+		<select id="price-min" class="form-control" name="pricemin" [(ngModel)]="priceMinFilter" (ngModelChange)="onPriceMinChange()" formControlName="priceMin">
+      <option *ngFor="let _priceMin of _priceOptions" [value]="_priceMin.productPrice" >{{ _priceMin.productPrice }}</option>
     </select>
 
 		<!-- Price To Select -->
 		<label for="price-max">Max Price</label>
 		<select id="price-max" class="form-control" name="pricemax" [(ngModel)]="priceMaxFilter" (ngModelChange)="onPriceMaxChange()"
 			formControlName="priceMax">
-      <option *ngFor="let _priceMax of _priceOptions" [value]="_priceMax.productPrice" >{{ _priceMax.productPrice | currency:'USD':true:'1.0-2' }}</option>
+      <option *ngFor="let _priceMax of _priceOptions | slice:priceIndex" [value]="_priceMax.productPrice" >{{ _priceMax.productPrice}}</option>
     </select>
 
 		<button type="submit" (click)="onSubmit()">Filter by Price!</button>

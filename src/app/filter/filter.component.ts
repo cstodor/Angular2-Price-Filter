@@ -11,6 +11,7 @@ export class FilterComponent {
   // Initializing Properties
   priceMinFilter: number;
   priceMaxFilter: number;
+  priceIndex: number;
   priceFilterForm: FormGroup;
 
   // Outputs
@@ -37,7 +38,12 @@ export class FilterComponent {
     )
   }
   onPriceMinChange(){
-   //console.log(arguments); 
+    if (this.priceMinFilter) {
+      let priceArraySelected: any[] = this._priceOptions.filter(item => item.productPrice < this.priceMinFilter);
+      let priceArrayIndex: number = Object.keys(priceArraySelected).length;
+      this.priceIndex = priceArrayIndex + 1;
+      console.log(arguments); 
+    }
   }
   onPriceMaxChange(){
    //console.log(arguments); 
@@ -69,7 +75,11 @@ export class FilterComponent {
     { "productPrice": 90000 },
     { "productPrice": 100000 },
     { "productPrice": 150000 },
-    { "productPrice": 200000 }
+    { "productPrice": 200000 },
+    { "productPrice": 300000 },
+    { "productPrice": 400000 },
+    { "productPrice": 500000 },
+    { "productPrice": 1000000 },
   ]
 
 }
