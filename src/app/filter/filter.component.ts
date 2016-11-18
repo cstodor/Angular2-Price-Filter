@@ -8,48 +8,29 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FilterComponent {
 
+  // add readonly property to filter maxPrice must greater than minPrice
   public get maxPriceOptions(): any[] { 
-    return this.priceMinFilter ?  this._priceOptions.filter(p => p > this.priceMinFilter) : this._priceOptions;
+    return this.priceMinFilter ?  this._priceOptions.filter(p => p.productPrice > this.priceMinFilter) : this._priceOptions;
   }
 
   // Initializing Properties
-  priceMinFilter: number;
-  priceMaxFilter: number;
-  priceIndex: number;
+  priceMinFilter: number = 0;
+  priceMaxFilter: number = 0;
   priceFilterForm: FormGroup;
 
 
 
   // Outputs
-  @Output() filterPrice: EventEmitter<{
-    priceMin: number,
-    priceMax: number
-  }> = new EventEmitter<{
-    priceMin: number,
-    priceMax: number
-  }>();
+  @Output() filterPrice: EventEmitter<IProductPriceLimit> = new EventEmitter<IProductPriceLimit>();
 
   // Constructor
   constructor() {
     this.priceFilterForm = new FormGroup({
-      priceMin: new FormControl('any'),
-      priceMax: new FormControl('any')
+      priceMin: new FormControl(""),
+      priceMax: new FormControl("")
     });
-
-    this.priceFilterForm.controls['priceMin'].valueChanges.subscribe(
-      (data: any) => console.log(data)
-    )
-    this.priceFilterForm.controls['priceMax'].valueChanges.subscribe(
-      (data: any) => console.log(data)
-    )
   }
-  onPriceMinChange() {
-    if (this.priceMinFilter) {
-      let priceArraySelected: any[] = this._priceOptions.filter(item => item.productPrice < this.priceMinFilter);
-      let priceArrayIndex: number = Object.keys(priceArraySelected).length;
-      this.priceIndex = priceArrayIndex + 1;
-    }
-  }
+ 
 
   onPriceMaxChange() {
    //console.log(arguments); 
@@ -57,14 +38,13 @@ export class FilterComponent {
   // From Actions
   onSubmit() {
     this.filterPrice.emit({
-      priceMin: this.priceMinFilter,
-      priceMax: this.priceMaxFilter
+      priceMin: this.priceMinFilter || null,
+      priceMax: this.priceMaxFilter || null
     });
   }
 
   // Data
   _priceOptions = [
-    { "productPrice": null },
     { "productPrice": 500 },
     { "productPrice": 1000 },
     { "productPrice": 2000 },

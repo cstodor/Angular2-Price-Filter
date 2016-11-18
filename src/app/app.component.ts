@@ -8,10 +8,10 @@ import { Component, Input } from '@angular/core';
 
 export class AppComponent {
 
-  @Input() priceMinFilter: number;
-  @Input() priceMaxFilter: number;
+  @Input() priceMinFilter: number | null;
+  @Input() priceMaxFilter: number | null;
 
-  filterPrice(filter) {
+  filterPrice(filter: IProductPriceLimit) {
     this.priceMinFilter = filter.priceMin;
     this.priceMaxFilter = filter.priceMax;
   }
