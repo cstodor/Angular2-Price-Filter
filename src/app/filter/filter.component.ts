@@ -8,11 +8,17 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FilterComponent {
 
+  public get maxPriceOptions(): any[] { 
+    return this.priceMinFilter ?  this._priceOptions.filter(p => p > this.priceMinFilter) : this._priceOptions;
+  }
+
   // Initializing Properties
   priceMinFilter: number;
   priceMaxFilter: number;
   priceIndex: number;
   priceFilterForm: FormGroup;
+
+
 
   // Outputs
   @Output() filterPrice: EventEmitter<{
@@ -37,15 +43,15 @@ export class FilterComponent {
       (data: any) => console.log(data)
     )
   }
-  onPriceMinChange(){
+  onPriceMinChange() {
     if (this.priceMinFilter) {
       let priceArraySelected: any[] = this._priceOptions.filter(item => item.productPrice < this.priceMinFilter);
       let priceArrayIndex: number = Object.keys(priceArraySelected).length;
       this.priceIndex = priceArrayIndex + 1;
-      console.log(arguments); 
     }
   }
-  onPriceMaxChange(){
+
+  onPriceMaxChange() {
    //console.log(arguments); 
   }
   // From Actions
@@ -58,6 +64,7 @@ export class FilterComponent {
 
   // Data
   _priceOptions = [
+    { "productPrice": null },
     { "productPrice": 500 },
     { "productPrice": 1000 },
     { "productPrice": 2000 },
@@ -81,5 +88,8 @@ export class FilterComponent {
     { "productPrice": 500000 },
     { "productPrice": 1000000 },
   ]
+}
 
+interface IPriceOptions {
+  productPrice: string;
 }

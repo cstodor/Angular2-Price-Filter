@@ -1,9 +1,4 @@
 import { Component, Input } from '@angular/core';
-interface  IProduct {
-  name:string;
-  price:number;
-}
-
 
 @Component({
   selector: 'zt-root',
@@ -22,6 +17,10 @@ export class AppComponent {
   }
 
   _productList = [
+     {
+      "name": "Product Zero",
+      "price": 100,
+    },
     {
       "name": "Product One",
       "price": 600,
@@ -71,4 +70,9 @@ export class AppComponent {
       "price": 1000000,
     }
   ]
+}
+
+interface  IProduct {
+  name:string;
+  price:number;
 }
