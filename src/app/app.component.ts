@@ -1,4 +1,9 @@
 import { Component, Input } from '@angular/core';
+interface  IProduct {
+  name:string;
+  price:number;
+}
+
 
 @Component({
   selector: 'zt-root',

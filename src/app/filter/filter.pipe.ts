@@ -5,21 +5,21 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PriceFilterPipe implements PipeTransform {
 
-  transform(value, args?) {
+  transform(list, minPrice: number | undefined, maxPrice:number | undefined) {
     // ES6 array destructuring
-    let [minPrice, maxPrice] = args;
-    
+    let filter_list = list;
     if (minPrice) {
-      return value.filter(_priceMin => {
-        return _priceMin.value >= +minPrice;
+      filter_list = filter_list.filter(_item => {
+        return _item.price >= +minPrice;
       });
     } 
     
     if (maxPrice) {
-      return value.filter(_priceMax => {
-        return _priceMax.value <= +maxPrice;
+      filter_list = filter_list.filter(_item => {
+        return _item.price <= +maxPrice;
       });
     }
+    return  filter_list;
   }
 
 }

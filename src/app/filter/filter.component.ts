@@ -36,7 +36,12 @@ export class FilterComponent {
       (data: any) => console.log(data)
     )
   }
-
+  onPriceMinChange(){
+   //console.log(arguments); 
+  }
+  onPriceMaxChange(){
+   //console.log(arguments); 
+  }
   // From Actions
   onSubmit() {
     this.filterPrice.emit({
